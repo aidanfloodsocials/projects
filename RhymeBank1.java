@@ -27,8 +27,21 @@ public class RhymeBank1 {
             if (userInput == 1) {
                 // Option 1: Add a customer to the bank
                 System.out.println("Bank Add Customer: ");
-                System.out.println("Please enter an account balance");
-                double balance = input.nextDouble();
+                double balance = 0.0d;
+                boolean balanceNotSet = true;
+
+                while(balanceNotSet ) {
+                    System.out.println("Please enter an account balance: ");
+                    try {
+                        balance = input.nextDouble();
+                        balanceNotSet = false;
+                    }
+                    catch (Exception e) {
+                        input.next();
+                        System.out.println("ERROR: You must enter a double");
+                    }
+                    System.out.println("Balance is " + balance);
+                }
                 accountBalances[size] = balance;
                 System.out.println("Please enter the account name");
                 input.nextLine();
